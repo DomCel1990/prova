@@ -1,12 +1,13 @@
 package com.prova_colloqui.prova.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
-@Al
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Libro {
 
     @Id
@@ -15,7 +16,11 @@ public class Libro {
 
     private boolean disponibile;
     private Integer annoPubblicazione;
-    private String autore;
+
+    @ManyToOne
+    @JoinColumn(name = "autore_id")
+    private Autore autore;
+
     private String titolo;
 
 
